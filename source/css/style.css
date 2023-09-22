@@ -1,0 +1,208 @@
+
+.nav-pills li a:hover {
+  background-color: rgb(67, 67, 243);
+}
+.dropdown-item a:hover {
+  background-color: rgb(67, 67, 243);
+}
+.container-fluid {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+#contenu{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+#sidebar {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+#content {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+#Accueil {
+  flex-direction: column;
+}
+#conge {
+  justify-content: center;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  cursor: pointer;
+}
+#conge:hover {
+  transform: translate(0px, -2px);
+  transition: 0.5s;
+}
+#notif {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 300px;
+  background-color: antiquewhite;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+#notif:hover {
+  transform: translate(0px, -2px);
+  transition: 0.5s;
+}
+#formulaire{
+    flex-direction: column;
+}
+.liste {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 50vw;
+  background-color: antiquewhite;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.detail{
+  display: flex;
+  flex-direction: column;
+}
+.CL {
+  color: #fff;
+  width: 350px;
+  height: 130px;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.CL:hover {
+  transform: translate(0px, -6px);
+  transition: 0.7s;
+}
+.CL:not(:hover){
+  transform: translate(0px, 6px);
+  transition: 0.4s ;
+}
+.CL button {
+  font-size: 13px;
+  background-color: #1f1c1c34;
+  color: #fff;
+  font-family: sans-serif;
+  border: none;
+  outline: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.CL button:hover {
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.CL button:active {
+  font-size: 13px;
+  font-weight: normal;
+  transition: 0.3s;
+}
+#A{
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+@media (max-width: 1100px){
+  .CL {
+    width: 250px;
+  }
+}
+@media (max-width: 576px) {
+  #A{
+    display: block;
+  }
+  #conge{
+    width: 250px;
+  }
+  #notif{
+    width: 250px;
+  }
+  .CL{
+    width: 115px;
+    height: 80px;
+  }
+  .CL p {
+      display: none;
+  }
+}
+.val {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#form-dem{
+    background-color: #fff;
+    border-radius: 4px;
+}
+.date{
+  display: flex;
+  flex-direction: row;
+}
+.myscrollbox{
+  width: 75vw;
+  height: 75vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+}
+.retour:hover{
+  transform: translate(0px, -5px);
+  transition: 0.5s;
+}
+.retour:not(:hover){
+  transition: 0.5s;
+}
+.custom-container{
+  width: auto;
+  height: auto;
+}
+header{
+  text-align: center;
+  height: 5%;
+  background-color: #f8f8f8;
+  border-bottom: #0a0a0a;
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: #fff; /* Couleur du cercle */
+  border-radius: 50%; /* Border-radius de 50% pour créer un cercle */
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+}
+.pop{
+  position: fixed ;
+  display: flex;
+  top: 5%;
+  left: 15%;
+  line-height: 0.8;
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #a4b7f7;
+  border-radius: 2px;
+}
+

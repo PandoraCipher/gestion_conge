@@ -1,0 +1,9 @@
+{
+    "name": "antso/ge_conge3",
+    "autoload": {
+        "psr-4": {
+            "App\\": "class/"
+        }
+    },
+    "require": {}
+}
