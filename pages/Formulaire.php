@@ -1,5 +1,5 @@
 <?php
-
+require '../vendor/autoload.php';
 use App\Demande;
 
 require_once('connexiondb.php');
@@ -44,7 +44,7 @@ require 'auth.php';
                 <div class="mx-3 py-3" style="max-width: 500px;">
                     <form method="post" id="form-dem" autocomplete="off">
                         <div class="m-1">
-                            <label class="form-label" for="">Type de demande:</label><br>
+                            <label class="form-label">Type de demande:</label><br>
                             <div class="select-wrapper">
                                 <select class="form-control" id="type" name="type">
                                     <option value="permission">Permission</option>
@@ -54,7 +54,7 @@ require 'auth.php';
                             </div>
                         </div>
                         <div class="m-2 input-group-date column">
-                            <label class="form-label" for="">Date de début:</label>
+                            <label class="form-label">Date de début:</label>
                             <div class=" imput-group-date date">
                                 <input class="form-control" type="text" placeholder="dd-M-Y" name="dateDeb" id="dateDeb" required>
                                 <span class="input-group-append">
@@ -65,7 +65,7 @@ require 'auth.php';
                             </div>
                         </div>
                         <div class="m-2">
-                            <label class="form-label" for="">Date de fin:</label>
+                            <label class="form-label">Date de fin:</label>
                             <div class=" imput-group-date date">
                                 <input class="form-control" type="text" placeholder="dd-M-Y" name="dateFin" id="dateFin" required>
                                 <span class="input-group-append">
@@ -76,7 +76,7 @@ require 'auth.php';
                             </div>
                         </div>
                         <div class="m-2">
-                            <label class="form-label" for="">Motif:</label><br>
+                            <label class="form-label">Motif:</label><br>
                             <textarea name="motif" class="form-control" id="motif" cols="30" rows="7" required></textarea>
                         </div>
                         <input class="btn btn-primary m-2" type="submit" name="submit" value="Soumettre" id="soumission">

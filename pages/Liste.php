@@ -77,9 +77,14 @@ require 'auth.php';
                                         } else {
                                             echo recup_nom($demande['id_agent']);
                                         }
+                                        
+                                        $date1 = new DateTime($demande['date_debut']);
+                                        $date2 = new DateTime($demande['date_fin']);
+                                        $date_deb = $date1->format("d M Y");
+                                        $date_fin = $date2->format("d M Y");
                                         ?></p>
                                     <p><?= $demande['type_absence']; ?></p>
-                                    <p><?= $demande['date_debut'] . " au " . $demande['date_fin']; ?></p>
+                                    <p><?= $date_deb . " au " . $date_fin; ?></p>
                                 </div>
                                 <div class="detail">
                                     <a href="#" class="detail" id="detail<?= $demande['id_demande']; ?>">détails</a>
@@ -87,8 +92,8 @@ require 'auth.php';
                                         <p style="font-weight: bold;"><u>Voici les détails de cette demande</u></p>
                                         <p>Envoyé le: <?= $demande['date_demande'] ?></p>
                                         <p>par: <?= recup_nom($demande['id_agent']) ?></p>
-                                        <p>date début: <?= $demande['date_debut'] ?></p>
-                                        <p>date fin: <?= $demande['date_fin'] ?></p>
+                                        <p>date début: <?= $date_deb ?></p>
+                                        <p>date fin: <?= $date_fin ?></p>
                                         <p>durée: <?= $demande['duree'] ?> jours</p>
                                         <p>Motif: <?= $demande['motif'] ?></p>
                                         <p><?php

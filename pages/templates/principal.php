@@ -35,7 +35,6 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                             <a class="nav-link text-white text-center text-sm-start" href="#sidemenu" data-bs-toggle="collapse" aria-current="page">
                                 <i class="fa fa-house"></i>
                                 <span class="ms-2 d-none d-sm-inline">Accueil</span>
-                                <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="nav collapse ms-1 flex-column d-block" id="sidemenu" data-bs-parent="#menu">
                                 <li class="nav-item">
@@ -46,10 +45,16 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item my-1">
+                        <li class=" nav-item my-1">
                             <a class="nav-link text-white text-center text-sm-start" href="Calendrier.php" aria-current="page">
                                 <i class="fa fa-calendar"></i>
-                                <span class="ms-2 d-none d-sm-inline">Calendrier</span>
+                                <span class="ms-0 d-none d-sm-inline">Calendrier</span>
+                            </a>
+                        </li>
+                        <li class="nav-item my-1">
+                            <a class="nav-link text-white text-center text-sm-start" href="menu_groupe.php" aria-current="page">
+                                <i class="fa fa-users"></i>
+                                <span class="ms-2 d-none d-sm-inline">Groupe</span>
                             </a>
                         </li>
                     </ul>

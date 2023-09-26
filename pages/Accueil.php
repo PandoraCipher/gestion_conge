@@ -66,7 +66,7 @@ require 'auth.php';
         </div>
     </body>
     <?php $content = ob_get_clean();
-    require_once('templates/principal.php')
+    require_once('templates/principal.php');
     ?>
 
     </html>
