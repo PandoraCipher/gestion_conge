@@ -1,23 +1,28 @@
 <?php
 require '../vendor/autoload.php';
+
 use App\Agent;
 
 require_once('connexiondb.php');
 session_start();
+if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
+    header('location:Accueil.php'); // Redirige vers index.php si la session n'est pas ouverte
+    exit();
+} else {
+    $message = ' ';
+    if (isset($_POST['login'])) {
+        $agent = new Agent($conn);
+        if ($agent->seConnecter($_POST['nom'], $_POST['mdp'])) {
+            $_SESSION['id_agent'] = $agent->id_agent;
+            $_SESSION['nom'] = $agent->nom;
+            $_SESSION['statut'] = $agent->statut ? "Admin" : "User";
+            $_SESSION['acquis'] = $agent->acquis;
+            $_SESSION['solde'] = $agent->solde;
 
-$message = ' ';
-if (isset($_POST['login'])) {
-    $agent = new Agent($conn);
-    if ($agent->seConnecter($_POST['nom'], $_POST['mdp'])) {
-        $_SESSION['id_agent'] = $agent->id_agent;
-        $_SESSION['nom'] = $agent->nom;
-        $_SESSION['statut'] = $agent->statut ? "Admin" : "User";
-        $_SESSION['acquis'] = $agent->acquis;
-        $_SESSION['solde'] = $agent->solde;
-
-        header('location:Accueil.php');
-    } else {
-        $message = 'Vérifiez votre nom ou votre mot de passe';
+            header('location:Accueil.php');
+        } else {
+            $message = 'Vérifiez votre nom ou votre mot de passe';
+        }
     }
 }
 ?>
@@ -66,9 +71,9 @@ if (isset($_POST['login'])) {
     const togglePassword = document.getElementById('vision');
 
     togglePassword.addEventListener('mousedown', function() {
-            motDePasse.type = 'text';
+        motDePasse.type = 'text';
     });
     togglePassword.addEventListener('mouseup', function() {
-            motDePasse.type = 'password';
+        motDePasse.type = 'password';
     });
 </script>
