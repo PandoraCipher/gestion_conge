@@ -40,7 +40,7 @@ require 'auth.php';
                 <a href="Accueil.php" class="btn btn-primary rounded-circle position-fixed retour" style="bottom: 20px; right: 20px;">
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <h2 style="padding: 11px;">Faire une nouvelle demande</h2>
+                <h2 style="padding: 10px;">Faire une nouvelle demande</h2>
                 <div class="mx-3 py-3" style="max-width: 500px;">
                     <form method="post" id="form-dem" autocomplete="off">
                         <div class="m-1">
