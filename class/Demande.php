@@ -1,5 +1,9 @@
 <?php
+
 namespace App;
+
+use DateInterval;
+use DatePeriod;
 use DateTime;
 use PDO;
 use PDOException;
@@ -115,10 +119,24 @@ class Demande
         try {
             $objetDateDebut = DateTime::createFromFormat('d-M-Y', $date_debut);
             $objetDateFin = DateTime::createFromFormat('d-M-Y', $date_fin);
+            // Comptez les samedis et dimanches dans la période de congé
+            $interval = new DateInterval('P1D'); // Interval d'un jour
+            $periode = new DatePeriod($objetDateDebut, $interval, $objetDateFin);
+            $joursWeekend = 0;
+
+            foreach ($periode as $jour) {
+                // Utilisez N pour obtenir le numéro du jour de la semaine (1 pour lundi, 7 pour dimanche)
+                $jourSemaine = $jour->format('N');
+
+                // Si c'est un samedi (6) ou un dimanche (7), augmentez le compteur
+                if ($jourSemaine == 6 || $jourSemaine == 7) {
+                    $joursWeekend++;
+                }
+            }
             $date_debut_format = $objetDateDebut->format('Y-m-d');
             $date_fin_format = $objetDateFin->format('Y-m-d');
             $difference = $objetDateDebut->diff($objetDateFin);
-            $duree = $difference->days;
+            $duree = $difference->days - $joursWeekend + 1;
             $etat = 'en attente';
             $sql = "INSERT INTO demande(date_debut, date_fin, duree, etat, type_absence, motif, id_agent)
                      VALUES(:date_debut, :date_fin, :duree, :etat, :type_absence, :motif, :id_agent)";
