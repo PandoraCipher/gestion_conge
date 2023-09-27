@@ -1,8 +1,9 @@
 <?php
 // Inclure votre fichier de configuration de base de données et la classe Demande
-require_once('../pages/connexiondb.php');
-require('Demande.php');
 
+use App\Demande;
+
+require_once('../pages/connexiondb.php');
 // Vérifier si l'ID de la demande est envoyé via POST
 try {
     if (isset($_POST['id_demande'])) {

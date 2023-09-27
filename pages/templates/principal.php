@@ -86,7 +86,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
             Goodbye Nostalgia
         </footer>-->
     </div>
-    <script src="../source/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 <script>
     var statut = "<?= $statut ?>";
