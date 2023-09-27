@@ -15,9 +15,9 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>navbar</title>
-    <link rel="stylesheet" href="../source/css/bootstrap.css">
-    <link rel="stylesheet" href="../source/fontawesome-free-6.2.1-web/css/all.css">
-    <link rel="stylesheet" href="../source/css/style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/fontawesome-free-6.2.1-web/css/all.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body class="container-fluid ">

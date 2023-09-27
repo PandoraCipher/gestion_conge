@@ -22,8 +22,8 @@ require 'auth.php';
         <title>Formulaire</title>
         <!-- Inclure les fichiers CSS et JavaScript de Bootstrap-datepicker -->
         <link rel="stylesheet" href="../source/css/bootstrap-datepicker.min.css">
-        <script src="../source/js/jquery-3.7.0.js"></script>
-        <script src="../source/js/bootstrap-datepicker.min.js"></script>
+        <script src="../assets/js/jquery-3.7.0.js"></script>
+        <script src="../assets/js/bootstrap-datepicker.min.js"></script>
         <script>
             window.addEventListener("popstate", function(event) {
                 window.location.href = "/Accueil.php";

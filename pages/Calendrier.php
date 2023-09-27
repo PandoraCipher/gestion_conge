@@ -15,8 +15,8 @@ require 'auth.php';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calendrier</title>
-        <link rel="stylesheet" href="../source/css/bootstrap.css">
-        <link rel="stylesheet" href="../source/css/calendar.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/calendar.css">
         <script>
             window.addEventListener("popstate", function(event) {
                 window.location.href = "/Accueil.php";

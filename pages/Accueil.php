@@ -23,7 +23,7 @@ require 'auth.php';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="../source/fontawesome-free-6.2.1-web/css/all.css">
+        <link rel="stylesheet" href="../assets/fontawesome-free-6.2.1-web/css/all.css">
     </head>
 
     <?php ob_start(); ?>
