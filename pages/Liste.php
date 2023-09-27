@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 
+use App\Agent;
 use App\Demande;
 
 require_once('connexiondb.php');
@@ -60,8 +61,10 @@ if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
             <div class="myscrollbox">
                 <?php
                 foreach ($demandes as $demande) {
-                    if (isset($_POST['accept'])) {
+                    if (isset($_POST['accept' . $demande['id_demande']])) {
                         $dem->accepterDemande($_POST['id_demande']);
+                        $agent = new Agent($conn);
+                        $agent->sousConge($_POST['id_agent' . $demande['id_demande']],$_POST['duree' . $demande['id_demande']]);
                         header('location:Liste.php');
                     }
                     if (isset($_POST['refus'])) {
@@ -118,8 +121,10 @@ if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
                                         if ($demande['etat'] == 'en attente') {
                                     ?>
                                             <input type="hidden" name="id_demande" value="<?= $demande['id_demande']; ?>">
+                                            <input type="hidden" name="id_agent<?= $demande['id_demande']; ?>" value="<?= $demande['id_agent']; ?>">
+                                            <input type="hidden" name="duree<?= $demande['id_demande']; ?>" value="<?= $demande['duree']; ?>">
                                             <input class="form-control" type="text" placeholder="motif de rejet" name="motif_rejet" id="motif_rejet<?= $demande['id_demande']; ?>">
-                                            <input class="btn btn-success m-1" type="submit" name="accept" id="accept" value="Accepter" onclick="alert('demande acceptée')">
+                                            <input class="btn btn-success m-1" type="submit" name="accept<?= $demande['id_demande']; ?>" id="accept" value="Accepter" onclick="alert('demande acceptée.')">
                                             <input class="btn btn-danger m-1" type="submit" name="refus" id="refus<?= $demande['id_demande']; ?>" value="Refuser">
 
                                     <?php } else {

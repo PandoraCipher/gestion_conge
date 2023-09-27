@@ -31,15 +31,7 @@ class Agent{
      */
     public $statut;
 
-    /**
-     * @var float
-     */
-    public $acquis;
 
-    /**
-     * @var float
-     */
-    public $solde;
 
 
     /**
@@ -70,8 +62,6 @@ class Agent{
                 $this->id_agent = $user['id_agent'];
                 $this->nom = $user['nom'];
                 $this->statut = $user['statut'];
-                $this->acquis = $user['acquis'];
-                $this->solde = $user['solde'];
                 return true;
                 }else{
                     return false;
@@ -80,6 +70,24 @@ class Agent{
         }catch(PDOException $e){
             echo "tsita";
             return false;
+        }
+    }
+
+    /**
+     * récupère un enregistrement d'agent
+     * @param int $id_agent
+     * 
+     * @return [type]
+     */
+    public function recupAgent(int $id_agent){
+        try{
+            $sql = "SELECT * FROM agent WHERE id_agent = :id_agent";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id_agent", $id_agent, PDO::PARAM_INT);
+            $stmt->execute();
+            return $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            echo "erreur" . $e->getMessage();
         }
     }
 
