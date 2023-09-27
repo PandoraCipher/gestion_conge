@@ -1,10 +1,16 @@
 <?php
 require '../vendor/autoload.php';
+use App\Agent;
 use App\Demande;
 
 require_once('connexiondb.php');
 require 'auth.php';
 
+
+$agent = new Agent($conn);
+$enreg = $agent->recupAgent($_SESSION['id_agent']);
+$_SESSION['solde'] = $enreg['solde'];
+$_SESSION['acquis'] = $enreg['acquis'];
 
     if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
         $dem = new Demande($conn);
@@ -12,7 +18,7 @@ require 'auth.php';
     } else if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "Admin")) {
         $dem = new Demande($conn);
         $demandes = $dem->compteurDemande();
-    }
+    } 
 ?>
 
 
@@ -47,15 +53,15 @@ require 'auth.php';
                 </div>
                 <div id="conge" style="background-color:#53f3e6;">
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $_SESSION['acquis']; ?></p>
+                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $enreg['acquis']; ?></p>
                         <p style="margin: 0; padding: 0;">acquis</p>
                     </div>
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $_SESSION['solde']; ?></p>
+                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $enreg['solde']; ?></p>
                         <p style="margin: 0; padding: 0;">solde</p>
                     </div>
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= ($_SESSION['acquis'] - $_SESSION['solde']); ?></p>
+                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= ($enreg['acquis'] - $enreg['solde']); ?></p>
                         <p style="margin: 0; padding: 0;">pris</p>
                     </div>
                 </div>

@@ -16,8 +16,6 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
             $_SESSION['id_agent'] = $agent->id_agent;
             $_SESSION['nom'] = $agent->nom;
             $_SESSION['statut'] = $agent->statut ? "Admin" : "User";
-            $_SESSION['acquis'] = $agent->acquis;
-            $_SESSION['solde'] = $agent->solde;
 
             header('location:Accueil.php');
         } else {

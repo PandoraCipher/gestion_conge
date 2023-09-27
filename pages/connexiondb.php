@@ -9,7 +9,7 @@ try{
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e){
-    echo'Tsy tafiditra ianao: '.$e ->getMessage();
+    echo'Tsy tafiditra ianao: '. $e->getMessage();
 }
 
 ?>
