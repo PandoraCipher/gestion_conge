@@ -91,6 +91,21 @@ class Agent{
         }
     }
 
+    /**
+     * récupère tous les agents
+     * @return [type]
+     */
+    public function recupToutAgent(){
+        try{
+            $sql = "SELECT * FROM agent";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            echo "erreur" . $e->getMessage();
+        }
+    }
+
     /** 
      * Une fonction qui permet de déconnecter un compte en détruisant sa session précédemment ouverte
      * @return [type]

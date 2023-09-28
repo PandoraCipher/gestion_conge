@@ -31,3 +31,7 @@ button {
 .custom-select:focus {
   opacity: 1;
 }
+.custom-select {
+  max-height: 30px;
+  overflow-y: auto;
+}
