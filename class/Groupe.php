@@ -14,15 +14,18 @@ class Groupe
     public function __construct($db)
     {
         $this->db = $db;
-        echo 'Voici la classe qui gère les groupes de travail';
+    }
+
+    public function recupGroupe(){
+
     }
 
     /**
-     * Récupère 
+     * Récupère tous les membres d'un groupe et les places dans un tableau $result
      * @return array
      */
-    public function recupGroupe(int $id_groupe, string $nom_groupe = null): array{
-        $sql = "SELECT * FROM appartenance WHERE id_groupe = :id_groupe";
+    public function recupAgentGroupe(int $id_groupe, string $nom_groupe = null): array{
+        $sql = "SELECT agent.nom FROM agent INNER JOIN appartenance ON agent.id_agent = appartenance.id_agent WHERE appartenance.id_groupe = :id_groupe";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id_groupe', $id_groupe, PDO::PARAM_STR);
         $stmt->execute();

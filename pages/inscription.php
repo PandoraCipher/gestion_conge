@@ -26,6 +26,7 @@ if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])){
     <title>Inscription</title>
     <link rel="stylesheet" href="../assets/fontawesome-free-6.2.1-web/css/all.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </head>
 

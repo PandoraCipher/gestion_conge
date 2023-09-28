@@ -1,0 +1,33 @@
+.tableau {
+  background-color: aliceblue;
+  margin: 10px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-radius: 4px;
+  max-width: 300px;
+  width: auto;
+  box-shadow: 0 3px 25px rgba(0, 0, 0, 0.15);
+}
+.titre {
+  background-color: rgb(224, 140, 140);
+  width: 100%;
+  border-bottom: 1px solid;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  left: 0;
+}
+.membre {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  max-width: 10 px;
+}
+.custom-select {
+  transition: opacity 1s ease-in-out;
+}
+.custom-select:focus {
+  opacity: 1;
+}
