@@ -3,6 +3,7 @@
 namespace App;
 
 use PDO;
+use PDOException;
 
 class Groupe
 {
@@ -96,11 +97,16 @@ class Groupe
      */
     public function supprimerAgentGroupe(int $id_agent, int $id_groupe)
     {
-        $sql = "DELETE FROM appartenance WHERE id_agent = :id_agent AND id_groupe = :id_groupe";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id_groupe', $id_groupe, PDO::PARAM_STR);
-        $stmt->bindParam(':id_agent', $id_agent, PDO::PARAM_STR);
-        return $stmt->execute();
+        try {
+            $sql = "DELETE FROM appartenance WHERE id_agent = :id_agent AND id_groupe = :id_groupe";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id_groupe', $id_groupe, PDO::PARAM_STR);
+            $stmt->bindParam(':id_agent', $id_agent, PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     /**

@@ -31,9 +31,12 @@ $Allgroup = $groupe->recupGroupe();
     <?php foreach ($Allgroup as $group) { ?>
 
         <div class="tableau">
-            <h2 class="titre"><?= $group['nom_groupe'] ?></h2>
+            <div class="titre" style="display: flex; justify-content: space-between;">
+                <h2><?= $group['nom_groupe'] ?></h2>
+                <button class="btn btnShow" data-group-id="<?= $group['id_groupe'] ?>">show</button>
+            </div>
             <ul id="data<?= $group['id_groupe'] ?>">
-                
+
             </ul>
             <div style="display: flex; justify-content: space-between;">
                 <div>
