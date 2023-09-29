@@ -270,9 +270,35 @@ class Demande
         return $result['nom'];
     }
 
-    public function verifDate(DateTime $date_deb, DateTime $date_fin, $id_agent)
+    public function verifDate(int $id_agent, DateTime $date_debut, DateTime $date_fin)
     {
-        $sql = "SELECT * FROM appartenance WHERE";
-        $demande = $this->getDemande($date_deb, $date_fin);
+        $sql = "SELECT * FROM appartenance WHERE id_agent = :id_agent";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id_agent', $id_agent, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($results as $result) {
+            $group = new Groupe($this->db);
+            $results2 = $group->recupAgentGroupe($result['id_groupe']);
+            foreach ($results2 as $result2) {
+                $etat = 'acceptée';
+                $id = $result2['id_agent'];
+                $dateDebutFormatted = $date_debut->format('Y-m-d');
+                $dateFinFormatted = $date_fin->format('Y-m-d');
+                $sql2 = "SELECT * FROM demande WHERE id_agent = :id AND etat = :etat AND ((:dateDebut BETWEEN date_debut AND date_fin) 
+                    OR (:dateFin BETWEEN date_debut AND date_fin))";
+                $stmt2 = $this->db->prepare($sql2);
+                $stmt2->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt2->bindParam(':etat', $etat, PDO::PARAM_STR);
+                $stmt2->bindParam(':dateDebut', $dateDebutFormatted, PDO::PARAM_STR);
+                $stmt2->bindParam(':dateFin', $dateFinFormatted, PDO::PARAM_STR);
+                $stmt2->execute();
+                $results3 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+                if (!empty($results3)) {
+                    return true; // Il y a un chevauchement
+                }
+            }
+        }
+        return false;
     }
 }

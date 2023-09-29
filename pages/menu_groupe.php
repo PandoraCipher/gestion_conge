@@ -33,21 +33,23 @@ $Allgroup = $groupe->recupGroupe();
         <div class="tableau">
             <div class="titre" style="display: flex; justify-content: space-between;">
                 <h2><?= $group['nom_groupe'] ?></h2>
-                <button class="btn btnShow" data-group-id="<?= $group['id_groupe'] ?>">show</button>
+                <button class="btn btnShow" data-group-id="<?= $group['id_groupe'] ?>" id="show<?= $group['id_groupe'] ?>">show</button>
             </div>
-            <ul id="data<?= $group['id_groupe'] ?>">
+            <ul classe="membre" id="data<?= $group['id_groupe'] ?>">
 
             </ul>
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    <select class="custom-select m-2" name="" id="selectAgent<?= $group['id_groupe'] ?>">
-                        <?php foreach ($Allagent as $agent) { ?>
-                            <option value="<?= $agent['id_agent']; ?>"><?= $agent['nom']; ?></option>
-                        <?php } ?>
-                    </select>
+            <?php if ($_SESSION['statut'] == 'Admin') { ?>
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <select class="custom-select m-2" name="" id="selectAgent<?= $group['id_groupe'] ?>">
+                            <?php foreach ($Allagent as $agent) { ?>
+                                <option value="<?= $agent['id_agent']; ?>"><?= $agent['nom']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <button class="btn text-success mx-1 p-0 btnAdd" data-group-id="<?= $group['id_groupe'] ?>"><i class="fa fa-plus mx-2"></i></button>
                 </div>
-                <button class="btn text-success mx-1 p-0 btnAdd" data-group-id="<?= $group['id_groupe'] ?>"><i class="fa fa-plus mx-2"></i></button>
-            </div>
+            <?php } ?>
         </div>
     <?php } ?>
     <script src="../assets/js/groupe.js"></script>
@@ -57,5 +59,18 @@ $Allgroup = $groupe->recupGroupe();
 require_once('templates/principal.php');
 
 ?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php foreach ($Allgroup as $group) { ?>
+            const show<?= $group['id_groupe'] ?> = document.getElementById("show<?= $group['id_groupe'] ?>");
+            show<?= $group['id_groupe'] ?>.addEventListener('click', function(event){
+                show<?= $group['id_groupe'] ?>.innerHTML = " ";
+            })
+
+        <?php } ?>
+
+    })
+</script>
 
 </html>

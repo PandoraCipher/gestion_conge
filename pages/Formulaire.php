@@ -25,6 +25,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../assets/css/bootstrap-datepicker.min.css">
     <script src="../assets/js/jquery-3.7.0.js"></script>
     <script src="../assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/js/verifDate.js"></script>
     <script>
         window.addEventListener("popstate", function(event) {
             window.location.href = "/Accueil.php";
@@ -42,7 +43,7 @@ if (isset($_POST['submit'])) {
                 <i class="fa fa-arrow-left"></i>
             </a>
             <h2 style="padding: 10px;">Faire une nouvelle demande</h2>
-            <div class="mx-3 py-3" style="max-width: 500px;">
+            <div class="mx-3" style="max-width: 500px;">
                 <form method="post" id="form-dem" autocomplete="off">
                     <div class="m-1">
                         <label class="form-label">Type de demande:</label><br>
@@ -78,11 +79,11 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="m-2">
                         <label class="form-label">Motif:</label><br>
-                        <textarea name="motif" class="form-control" id="motif" cols="30" rows="7" required></textarea>
+                        <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
                     </div>
                     <input class="btn btn-primary m-2" type="submit" name="submit" value="Soumettre" id="soumission">
                 </form>
-                <div>
+                <div id="Rem" style="display: none;">
                     <p style="color: red;">Cette demande chevauche 1 personne de votre groupe de travail</p>
                 </div>
             </div>

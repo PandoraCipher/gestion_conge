@@ -1,25 +1,31 @@
-document.getElementById('form-dem').addEventListener('submit', function(event) {
-    var dD = document.getElementById('dateDeb');
-    var dF = document.getElementById('dateFin');
-    var dateDebut = new Date(document.getElementById('dateDeb').value);
-    var dateFin = new Date(document.getElementById('dateFin').value);
-    var dateActuelle = new Date();
+$(document).ready(function () {
+    // Fonction déclenchée lorsque l'utilisateur clique sur le bouton avec l'ID "soumission"
+    $('#soumission').on('click', function (event) {
+        event.preventDefault();
+        // Obtenez les valeurs des champs de date
+        var dateDebut = $('#dateDeb').val();
+        var dateFin = $('#dateFin').val();
 
-    if (dateDebut > dateActuelle) {
-        dD.setCustomValidity('');
-        console.log('valide.');
-    } else {
-        dD.setCustomValidity("La date de début ne peut pas être antérieure à la date actuelle.");
-        event.preventDefault(); // Empêche la soumission du formulaire
-        console.log('non valide. ' + dateDebut);
-    }
-
-    if (dateFin > dateDebut) {
-        dF.setCustomValidity('');
-        console.log('valide.');
-    } else {
-        dF.setCustomValidity("La date de fin ne peut pas être antérieure à la date de début.");
-        event.preventDefault(); // Empêche la soumission du formulaire
-        console.log('non valide. ' + dateFin);
-    }
+        // Vérifiez si les deux champs de date sont remplis
+        if (dateDebut !== '' && dateFin !== '') {
+            // Effectuez la requête Ajax
+            $.ajax({
+                url: 'chevauchement.php', // Remplacez par le chemin de votre script PHP
+                type: 'POST',
+                data: { dateDebut: dateDebut, dateFin: dateFin },
+                success: function (result) {
+                    if (result === 'afficher') {
+                        // Affichez le div si le script PHP renvoie 'afficher'
+                        $('#Rem').show();
+                    } else {
+                        // Masquez le div sinon
+                        $('#Rem').hide();
+                    }
+                }
+            });
+        } else {
+            // Si l'un des champs est vide, masquez le div
+            $('#Rem').hide();
+        }
+    });
 });
