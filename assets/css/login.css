@@ -1,6 +1,6 @@
 body::before{
   content: "";
-    background: linear-gradient(135deg,#322fe6, #f76aeb);
+    background: linear-gradient(135deg,#ec9797, #322fe6, #f76aeb);
     /*background-image: url(../img/bg1.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
