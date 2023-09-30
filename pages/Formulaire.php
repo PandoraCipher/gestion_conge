@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                         <label class="form-label">Motif:</label><br>
                         <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
                     </div>
-                    <input class="btn btn-primary m-2" type="submit" name="submit" value="Soumettre" id="soumission">
+                    <input class="btn btn-primary m-2" type="button" name="submit" value="Soumettre" id="soumission">
                 </form>
                 <div id="Rem" style="display: none;">
                     <p style="color: red;">Cette demande chevauche 1 personne de votre groupe de travail</p>
