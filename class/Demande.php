@@ -111,10 +111,11 @@ class Demande
      * @param string $type_absence
      * @param string $motif
      * @param int $id_agent
+     * @param int $chevauchement
      * 
      * @return [type]
      */
-    public function ajoutDemande($date_debut, $date_fin, $type_absence, $motif, $id_agent)
+    public function ajoutDemande($date_debut, $date_fin, $type_absence, $motif, $id_agent, $chevauchement = 0)
     {
         try {
             $objetDateDebut = DateTime::createFromFormat('d-M-Y', $date_debut);
@@ -138,8 +139,8 @@ class Demande
             $difference = $objetDateDebut->diff($objetDateFin);
             $duree = $difference->days - $joursWeekend + 1;
             $etat = 'en attente';
-            $sql = "INSERT INTO demande(date_debut, date_fin, duree, etat, type_absence, motif, id_agent)
-                     VALUES(:date_debut, :date_fin, :duree, :etat, :type_absence, :motif, :id_agent)";
+            $sql = "INSERT INTO demande(date_debut, date_fin, duree, etat, type_absence, motif, chevauchement, id_agent)
+                     VALUES(:date_debut, :date_fin, :duree, :etat, :type_absence, :motif, :chevauchement, :id_agent)";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':date_debut', $date_debut_format);
             $stmt->bindParam(':date_fin', $date_fin_format);
@@ -147,6 +148,7 @@ class Demande
             $stmt->bindParam(':etat', $etat);
             $stmt->bindParam(':type_absence', $type_absence);
             $stmt->bindParam(':motif', $motif);
+            $stmt->bindParam(':chevauchement', $chevauchement);
             $stmt->bindParam(':id_agent', $id_agent);
             $stmt->execute();
         } catch (PDOException $e) {

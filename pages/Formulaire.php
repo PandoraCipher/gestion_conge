@@ -8,7 +8,14 @@ require 'auth.php';
 
 if (isset($_POST['submit'])) {
     $demande = new Demande($conn);
-    $demande->ajoutDemande($_POST['dateDeb'], $_POST['dateFin'], $_POST['type'], $_POST['motif'], $_SESSION['id_agent']);
+    $dateD = new DateTime($_POST['dateDeb']);
+    $dateF = new DateTime($_POST['dateFin']);
+    if ($demande->verifDate($_SESSION['id_agent'], $dateD, $dateF)) {
+        $demande->ajoutDemande($_POST['dateDeb'], $_POST['dateFin'], $_POST['type'], $_POST['motif'], $_SESSION['id_agent'], 1);
+    } else {
+        $demande->ajoutDemande($_POST['dateDeb'], $_POST['dateFin'], $_POST['type'], $_POST['motif'], $_SESSION['id_agent']);
+    }
+
     //header('location:Liste.php');
 }
 
@@ -98,12 +105,12 @@ if (isset($_POST['submit'])) {
         });
     })
 
-    function compteurWeekend(datedeb, datefin){
+    function compteurWeekend(datedeb, datefin) {
         let currentDate = new Date(datedeb);
         var nbrJour = 0;
-        while (currentDate <= datefin){
+        while (currentDate <= datefin) {
             const dayOfWeek = currentDate.getDay();
-            if (dayOfWeek === 0 || dayOfWeek === 6){
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
                 nbrJour++;
             }
             currentDate.setDate(currentDate.getDate() + 1);
@@ -131,7 +138,7 @@ if (isset($_POST['submit'])) {
         } else {
             alert('une demande a été envoyée.');
         }
-        
+
     });
 </script>
 <?php $content = ob_get_clean();

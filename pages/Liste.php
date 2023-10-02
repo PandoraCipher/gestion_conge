@@ -66,10 +66,12 @@ if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
                         $agent = new Agent($conn);
                         $agent->sousConge($_POST['id_agent' . $demande['id_demande']],$_POST['duree' . $demande['id_demande']]);
                         header('location:Liste.php');
+                        exit();
                     }
                     if (isset($_POST['refus'])) {
                         $dem->refuserDemande($_POST['id_demande'], $_POST['motif_rejet']);
                         header('location:Liste.php');
+                        exit();
                     }
                 ?>
                     <form class="container" method="post">
@@ -94,12 +96,19 @@ if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
                                 <a href="#" class="detail" id="detail<?= $demande['id_demande']; ?>">détails</a>
                                 <div class="pop pop<?= $demande['id_demande']; ?>" style="display: none">
                                     <p style="font-weight: bold;"><u>Voici les détails de cette demande</u></p>
-                                    <p>Envoyé le: <?= $demande['date_demande'] ?></p>
+                                    <p>Envoyé le: <?php
+                                     $date_envoie = new DateTime($demande['date_demande']);
+                                     echo ($date_envoie->format("d M Y") . ' à ' . $date_envoie->format("H:m")); ?></p>
                                     <p>par: <?= recup_nom($demande['id_agent']) ?></p>
                                     <p>date début: <?= $date_deb ?></p>
                                     <p>date fin: <?= $date_fin ?></p>
                                     <p>durée: <?= $demande['duree'] ?> jours</p>
                                     <p>Motif: <?= $demande['motif'] ?></p>
+                                    <?php 
+                                        if ($demande['chevauchement'] === 1){
+                                            echo ('<p class="text-danger">Cette demande chevauche une absence d\'un membre du même groupe de travail.</p>');
+                                        }
+                                    ?>
                                     <p><?php
                                         if ($demande['motif_rejet'] != "") {
                                             echo "Motif de rejet: " . $demande['motif_rejet'];
