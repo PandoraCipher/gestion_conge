@@ -55,7 +55,7 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
             </div>
             <p><a href="inscription.php" class="">inscription</a></p>
             <div class="fin">
-                <input type="submit" class="btn btn-success w-100 my-2" name="login" value="Connexion">
+                <input type="submit" class="btn btn-primary w-100 my-2" name="login" value="Connexion">
             </div>
         </form>
     </div>
