@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#dateDeb, #dateFin').on('change', function() {
         // Lorsque l'utilisateur modifie les champs de date
+        $('#Rem').hide();
         $('#soumission').val('Soumettre');
         $('#soumission').prop('type', 'button');
     });

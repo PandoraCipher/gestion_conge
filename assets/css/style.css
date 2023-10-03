@@ -196,7 +196,8 @@ header{
   align-items: center;
 }
 .pop{
-  position: fixed ;
+  font-family: "Roboto",sans-serif;
+  position: absolute ;
   display: flex;
   top: 5%;
   left: 15%;
@@ -205,5 +206,6 @@ header{
   padding: 10px;
   background-color: #a4b7f7;
   border-radius: 2px;
+  transition: opacity 100ms ease-in-out 200ms;
 }
 

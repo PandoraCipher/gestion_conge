@@ -25,7 +25,6 @@ $(document).ready(function () {
         console.log(result);
         if (result !== "0" && result !== "") {
           $("#" + result).fadeOut();
-          alert("suppression effectuée");
           console.log("réussite");
           $.ajax({
             url: "php/listeGroupe.php",
@@ -36,7 +35,6 @@ $(document).ready(function () {
             },
           });
         } else {
-          alert("échec");
           console.log("echec");
         }
       },
@@ -54,7 +52,6 @@ $(document).ready(function () {
       data: { groupId: groupId, selectedValue: selectedValue },
       success: function (result) {
         if (result == 1) {
-          alert("Success");
           $.ajax({
             url: "php/listeGroupe.php",
             type: "post",

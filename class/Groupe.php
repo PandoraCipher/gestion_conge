@@ -50,7 +50,7 @@ class Groupe
      * @param int $id_agent
      * @param int $id_groupe
      * 
-     * @return [type]
+     * @return boolean
      */
     public function verifAppartenance(int $id_agent, int $id_groupe)
     {
@@ -72,7 +72,7 @@ class Groupe
      * @param int $id_agent
      * @param int $id_groupe
      * 
-     * @return [type]
+     * @return boolean
      */
     public function ajoutAgentGroupe(int $id_agent, int $id_groupe)
     {
@@ -93,7 +93,7 @@ class Groupe
      * @param int $id_agent
      * @param int $id_groupe
      * 
-     * @return [type]
+     * @return boolean
      */
     public function supprimerAgentGroupe(int $id_agent, int $id_groupe)
     {
@@ -121,5 +121,34 @@ class Groupe
     {
         $this->supprimerAgentGroupe($id_agent, $old_groupe);
         $this->ajoutAgentGroupe($id_agent, $new_groupe);
+    }
+
+    /**
+     * Crée un nouveau groupe de travail
+     * @param int $id_groupe
+     * @param string $nom_groupe
+     * 
+     * @return boolean
+     */
+    public function ajoutGroupe(int $id_groupe, string $nom_groupe)
+    {
+        try {
+            $sql = "INSERT into groupe(id_groupe, nom_groupe) VALUES(:id_groupe, :nom_groupe) ";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id_groupe', $id_groupe, PDO::PARAM_INT);
+            $stmt->bindParam(':nom_groupe', $nom_groupe, PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function supprGroupe(int $id_groupe){
+        try{
+            $sql = "DELETE FROM appartenance";
+        }catch (PDOException $e){
+
+        }
     }
 }
