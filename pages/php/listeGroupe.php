@@ -17,7 +17,6 @@ foreach ($noms as $nom) { ?>
         <?php if ($_SESSION['statut'] == 'Admin') { ?>
             <div>
                 <button class="btn text-danger mx-1 p-0 btnDel" data-group-id="<?= $id_groupe ?>" data-agent-id="<?= $nom['id_agent'] ?>"><i class="fa fa-trash-alt mx-2"></i></button>
-                <button class="btn text-primary mx-1 p-0"><i class="fa fa-arrow-right mx-2"></i></button>
             </div>
         <?php } ?>
     </li>
