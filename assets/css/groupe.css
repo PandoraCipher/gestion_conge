@@ -1,4 +1,4 @@
-.tableau {
+.tableau { 
   background-color: aliceblue;
   margin: 10px;
   border-right: 1px solid;
@@ -27,6 +27,7 @@ button {
 }
 .custom-select {
   transition: opacity 1s ease-in-out;
+  overflow-y: scroll;
 }
 .custom-select:focus {
   opacity: 1;

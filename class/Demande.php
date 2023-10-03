@@ -89,6 +89,12 @@ class Demande
         }
     }
 
+    /**
+     * compte le nombre de demandes encore en attente d'un agent et le renvoie
+     * @param int $id_agent
+     * 
+     * @return int
+     */
     public function compteurDemandeAgent(int $id_agent): int
     {
         try {
@@ -111,10 +117,11 @@ class Demande
      * @param string $type_absence
      * @param string $motif
      * @param int $id_agent
+     * @param int $chevauchement
      * 
-     * @return [type]
+     * @return void
      */
-    public function ajoutDemande($date_debut, $date_fin, $type_absence, $motif, $id_agent)
+    public function ajoutDemande($date_debut, $date_fin, $type_absence, $motif, $id_agent, $chevauchement = 0)
     {
         try {
             $objetDateDebut = DateTime::createFromFormat('d-M-Y', $date_debut);
@@ -138,8 +145,8 @@ class Demande
             $difference = $objetDateDebut->diff($objetDateFin);
             $duree = $difference->days - $joursWeekend + 1;
             $etat = 'en attente';
-            $sql = "INSERT INTO demande(date_debut, date_fin, duree, etat, type_absence, motif, id_agent)
-                     VALUES(:date_debut, :date_fin, :duree, :etat, :type_absence, :motif, :id_agent)";
+            $sql = "INSERT INTO demande(date_debut, date_fin, duree, etat, type_absence, motif, chevauchement, id_agent)
+                     VALUES(:date_debut, :date_fin, :duree, :etat, :type_absence, :motif, :chevauchement, :id_agent)";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':date_debut', $date_debut_format);
             $stmt->bindParam(':date_fin', $date_fin_format);
@@ -147,6 +154,7 @@ class Demande
             $stmt->bindParam(':etat', $etat);
             $stmt->bindParam(':type_absence', $type_absence);
             $stmt->bindParam(':motif', $motif);
+            $stmt->bindParam(':chevauchement', $chevauchement);
             $stmt->bindParam(':id_agent', $id_agent);
             $stmt->execute();
         } catch (PDOException $e) {
@@ -158,7 +166,7 @@ class Demande
      * met à jour l'état d'une demande(acceptée) dans la base de donnée en cherchant son id
      * @param int $id_demande
      * 
-     * @return [type]
+     * @return void
      */
     public function accepterDemande($id_demande)
     {
@@ -179,7 +187,7 @@ class Demande
      * @param int $id_demande
      * @param string $motif_rejet défini comme 'null' par défaut
      * 
-     * @return [type]
+     * @return void
      */
     public function refuserDemande($id_demande, $motif_rejet = null)
     {
@@ -257,7 +265,7 @@ class Demande
      * Récupère le nom de celui qui a anvoyé la demande en utilisant l'id_agent contenu dans la demande
      * @param mixed $id
      * 
-     * @return [type]
+     * @return string
      */
     public function recup_nom($id)
     {
@@ -270,6 +278,14 @@ class Demande
         return $result['nom'];
     }
 
+    /**
+     * Vérifie si les dates entrées dans le formulaire se chevauche avec les dates de demandes déjà acceptées des agents du même groupe
+     * @param int $id_agent
+     * @param DateTime $date_debut
+     * @param DateTime $date_fin
+     * 
+     * @return boolean
+     */
     public function verifDate(int $id_agent, DateTime $date_debut, DateTime $date_fin)
     {
         $sql = "SELECT * FROM appartenance WHERE id_agent = :id_agent";
@@ -285,8 +301,12 @@ class Demande
                 $id = $result2['id_agent'];
                 $dateDebutFormatted = $date_debut->format('Y-m-d');
                 $dateFinFormatted = $date_fin->format('Y-m-d');
-                $sql2 = "SELECT * FROM demande WHERE id_agent = :id AND etat = :etat AND ((:dateDebut BETWEEN date_debut AND date_fin) 
-                    OR (:dateFin BETWEEN date_debut AND date_fin))";
+                $sql2 = "SELECT * FROM demande WHERE id_agent = :id AND etat = :etat AND(
+                    (:dateDebut BETWEEN date_debut AND date_fin) 
+                    OR (:dateFin BETWEEN date_debut AND date_fin)
+                    OR (date_debut BETWEEN :dateDebut AND :dateFin)
+                    OR (date_fin BETWEEN :dateDebut AND :dateFin)
+                    )";
                 $stmt2 = $this->db->prepare($sql2);
                 $stmt2->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt2->bindParam(':etat', $etat, PDO::PARAM_STR);

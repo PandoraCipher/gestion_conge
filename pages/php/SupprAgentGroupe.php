@@ -1,10 +1,10 @@
 <?php
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 use App\Groupe;
 
-require_once('connexiondb.php');
+require_once('../connexiondb.php');
 
 $groupe = new Groupe($conn);
 $id_groupe = $_POST['groupId'];

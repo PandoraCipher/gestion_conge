@@ -3,7 +3,7 @@ $(document).ready(function () {
     e.preventDefault();
     var groupId = $(this).data("group-id");
     $.ajax({
-      url: "listeGroupe.php",
+      url: "php/listeGroupe.php",
       type: "post",
       data: { groupId: groupId },
       success: function (result) {
@@ -18,17 +18,16 @@ $(document).ready(function () {
     var agentId = $(this).data("agent-id");
 
     $.ajax({
-      url: "SupprAgentGroupe.php",
+      url: "php/SupprAgentGroupe.php",
       type: "post",
       data: { groupId: groupId, agentId: agentId },
       success: function (result) {
         console.log(result);
         if (result !== "0" && result !== "") {
           $("#" + result).fadeOut();
-          alert("suppression effectuée");
           console.log("réussite");
           $.ajax({
-            url: "listeGroupe.php",
+            url: "php/listeGroupe.php",
             type: "post",
             data: { groupId: groupId },
             success: function (result) {
@@ -36,7 +35,6 @@ $(document).ready(function () {
             },
           });
         } else {
-          alert("échec");
           console.log("echec");
         }
       },
@@ -49,14 +47,13 @@ $(document).ready(function () {
     var selectedValue = $("#selectAgent" + groupId).val();
 
     $.ajax({
-      url: "AjoutAgentGroupe.php",
+      url: "php/AjoutAgentGroupe.php",
       type: "post",
       data: { groupId: groupId, selectedValue: selectedValue },
       success: function (result) {
         if (result == 1) {
-          alert("Success");
           $.ajax({
-            url: "listeGroupe.php",
+            url: "php/listeGroupe.php",
             type: "post",
             data: { groupId: groupId },
             success: function (result) {

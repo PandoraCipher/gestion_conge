@@ -1,7 +1,7 @@
 <?php
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 use App\Demande;
-require_once('connexiondb.php');
+require_once('../connexiondb.php');
 session_start();
 
 $date_deb = $_POST['dateDebut'];

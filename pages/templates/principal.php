@@ -32,7 +32,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                     <hr class="text-white d-none d-sm-block">
                     <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
                         <li class="nav-item my-sm-1 my-2 disabled">
-                            <a class="nav-link text-white text-center text-sm-start" href="#sidemenu" data-bs-toggle="collapse" aria-current="page">
+                            <a class="nav-link text-white text-center text-sm-start" href="Accueil.php" data-bs-toggle="collapse" aria-current="page">
                                 <i class="fa fa-house"></i>
                                 <span class="ms-2 d-none d-sm-inline">Accueil</span>
                             </a>
@@ -60,7 +60,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                     </ul>
                 </div>
                 <div>
-                    <div class="dropdown open">
+                    <div class="dropup open">
                         <a class="btn border-none outline-none text-white dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i><span class="ms-2 d-none d-sm-inline"><?= $username ?></span>
                         </a>

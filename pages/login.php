@@ -46,11 +46,11 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
             <p class="text-danger"><?= $message; ?></p>
             <div class="Name input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" name="nom" class="form-control" id="nom" required>
+                <input type="text" name="nom" placeholder="nom" class="form-control" id="nom" required>
             </div>
             <div class="pass input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" name="mdp" class="form-control" id="mdp" required>
+                <input type="password" name="mdp" placeholder="mot de passe" class="form-control" id="mdp" required>
                 <button type="button" class="btn bg-white border" id="vision"><i class="fa-solid fa-eye"></i></button>
             </div>
             <p><a href="inscription.php" class="">inscription</a></p>
