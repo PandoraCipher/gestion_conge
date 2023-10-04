@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#dateDeb, #dateFin').on('change', function() {
         // Lorsque l'utilisateur modifie les champs de date
+        verif = true;
         $('#Rem').hide();
         $('#soumission').val('Vérifier');
         $('#soumission').prop('type', 'button');
@@ -12,9 +13,10 @@ $(document).ready(function () {
         var dateDebut = $('#dateDeb').val();
         var dateFin = $('#dateFin').val();
         var motif = $('#motif').val();
+        console.log(verif);
 
         // Vérifiez si les deux champs de date sont remplis
-        if (dateDebut !== '' && dateFin !== '' && motif !== '') {
+        if (dateDebut !== '' && dateFin !== '' && motif !== '' && verif == true) {
             // Effectuez la requête Ajax
             $.ajax({
                 url: 'php/chevauchement.php', // Remplacez par le chemin de votre script PHP

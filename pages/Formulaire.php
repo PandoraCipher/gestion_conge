@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
                         <label class="form-label"><b>Motif:</b></label><br>
                         <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
                     </div>
-                    <input class="btn btn-primary m-2" type="button" name="submit" value="Vérifier" id="soumission">
+                    <input class="btn btn-primary m-2" type="submit" name="submit" value="Vérifier" id="soumission">
                 </form>
                 <div id="Rem" style="display: none;">
                     <p style="color: red;">Cette demande chevauche 1 personne de votre groupe de travail</p>
@@ -119,7 +119,9 @@ if (isset($_POST['submit'])) {
         return nbrJour;
     }
 
-    document.getElementById('form-dem').addEventListener('submit', function(event) {
+    var verif = true;
+
+    document.getElementById('soumission').addEventListener('click', function(event) {
         var dateDebut = new Date(document.getElementById('dateDeb').value);
         var dateFin = new Date(document.getElementById('dateFin').value);
         var dateActuelle = new Date();
@@ -134,16 +136,17 @@ if (isset($_POST['submit'])) {
         if (dateDebutSansHeure < dateActuelleSansHeure) {
             alert('La date de début ne peut pas être antérieure à la date actuelle.');
             console.log('dateDebut: ' + dateDebut + ' et dateActuelle: ' + dateActuelle);
+            verif = false;
             event.preventDefault(); // Empêche la soumission du formulaire
         } else if (dateFinSansHeure < dateDebutSansHeure) {
             alert('La date de fin ne peut pas être antérieure à la date de début.');
             event.preventDefault(); // Empêche la soumission du formulaire
+            verif = false;
         } else if (duree > solde) {
             alert("La durée de la demande dépasse votre solde d'absence.");
             console.log(duree);
             event.preventDefault();
-        } else {
-            alert('une demande a été envoyée.');
+            verif = false;
         }
 
     });
