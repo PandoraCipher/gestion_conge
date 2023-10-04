@@ -41,7 +41,7 @@ class Demande
                 WHEN etat = 'en attente' THEN 1 
                 ELSE 2 
             END,
-            date_demande";
+            date_demande DESC";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":id_agent", $id_agent, PDO::PARAM_INT);
             $stmt->execute();
@@ -62,7 +62,7 @@ class Demande
                 CASE 
                     WHEN etat = 'en attente' THEN 1 ELSE 2 
                 END,
-                date_demande";
+                date_demande DESC";
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

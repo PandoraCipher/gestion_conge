@@ -151,4 +151,17 @@ class Groupe
 
         }
     }
+
+    public function changeNomGroupe(int $id_groupe, string $nom){
+        try{
+            $sql = "UPDATE groupe SET nom_groupe = :nom WHERE id_groupe = :id_groupe";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_INT);
+            $stmt->bindParam(':id_groupe', $id_groupe, PDO::PARAM_STR);
+            $stmt->execute();
+
+        }catch (PDOException $e){
+            echo 'echec';
+        }
+    }
 }

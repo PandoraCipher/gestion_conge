@@ -32,30 +32,33 @@ $Allgroup = $groupe->recupGroupe();
         <i class="fa fa-arrow-left"></i>
     </a>
     <h2 style="padding: 10px;">Groupes de travail</h2>
-    <?php foreach ($Allgroup as $group) { ?>
+    <div class="myscroll">
+        <?php foreach ($Allgroup as $group) { ?>
 
-        <div class="tableau">
-            <div class="titre" style="display: flex; justify-content: space-between;">
-                <h2><?= $group['nom_groupe'] ?></h2>
-                <button class="btn btnShow" data-group-id="<?= $group['id_groupe'] ?>" id="show<?= $group['id_groupe'] ?>">show</button>
-            </div>
-            <ul  id="data<?= $group['id_groupe'] ?>">
-
-            </ul>
-            <?php if ($_SESSION['statut'] == 'Admin') { ?>
-                <div style="display: flex; justify-content: space-between;">
-                    <div>
-                        <select class="custom-select m-2 myscroll " name="" id="selectAgent<?= $group['id_groupe'] ?>">
-                            <?php foreach ($Allagent as $agent) { ?>
-                                <option value="<?= $agent['id_agent']; ?>"><?= $agent['nom']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <button class="btn text-success mx-1 p-0 btnAdd" data-group-id="<?= $group['id_groupe'] ?>"><i class="fa fa-plus mx-2"></i></button>
+            <div class="tableau">
+                <div class="titre" style="display: flex; justify-content: space-between;">
+                    <h2><?= $group['nom_groupe'] ?></h2>
+                    <button class="btn btnShow" data-group-id="<?= $group['id_groupe'] ?>" id="show<?= $group['id_groupe'] ?>">show</button>
                 </div>
-            <?php } ?>
-        </div>
-    <?php } ?>
+                <ul id="data<?= $group['id_groupe'] ?>">
+
+                </ul>
+                <?php if ($_SESSION['statut'] == 'Admin') { ?>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="ajout">
+                            <p class="mx-2 my-0"><b>Ajouter un membre:</b></p>
+                            <select class="form-select mx-2" name="" id="selectAgent<?= $group['id_groupe'] ?>">
+                                <?php foreach ($Allagent as $agent) { ?>
+                                    <option value="<?= $agent['id_agent']; ?>"><?= $agent['nom']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <button class="btn text-success mx-1 p-0 btnAdd" data-group-id="<?= $group['id_groupe'] ?>"><i class="fa fa-plus mx-2"></i></button>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
     <script src="../assets/js/groupe.js"></script>
 </body>
 

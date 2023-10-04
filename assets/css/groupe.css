@@ -24,15 +24,9 @@
 }
 button {
   max-width: 10 px;
+  max-height: 10 px;
 }
-.custom-select {
-  transition: opacity 1s ease-in-out;
+.myscroll{
   overflow-y: scroll;
 }
-.custom-select:focus {
-  opacity: 1;
-}
-.custom-select {
-  max-height: 30px;
-  overflow-y: auto;
-}
+

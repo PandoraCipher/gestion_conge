@@ -53,17 +53,16 @@ if (isset($_POST['submit'])) {
             <div class="mx-3" style="max-width: 500px;">
                 <form method="post" id="form-dem" autocomplete="off">
                     <div class="m-1">
-                        <label class="form-label">Type de demande:</label><br>
-                        <div class="select-wrapper">
-                            <select class="form-control" id="type" name="type">
+                        <label class="form-label"><b>Type de demande:</b></label><br>
+                        <div class="input-group">
+                            <select class="form-select" id="type" name="type">
                                 <option value="permission">Permission</option>
                                 <option value="conge">Congé</option>
-                                <i class="fa fa-caret-down"></i>
                             </select>
                         </div>
                     </div>
                     <div class="m-2 input-group-date column">
-                        <label class="form-label">Date de début:</label>
+                        <label class="form-label"><b>Date de début:</b></label>
                         <div class=" imput-group-date date">
                             <input class="form-control" type="text" placeholder="dd-M-Y" name="dateDeb" id="dateDeb" required>
                             <span class="input-group-append">
@@ -73,8 +72,9 @@ if (isset($_POST['submit'])) {
                             </span>
                         </div>
                     </div>
+                    <!-- <p class="text-danger" id="text1" style="display: none;">La date de début ne peut pas être antérieure à la date actuelle.</p> -->
                     <div class="m-2">
-                        <label class="form-label">Date de fin:</label>
+                        <label class="form-label"><b>Date de fin:</b></label>
                         <div class=" imput-group-date date">
                             <input class="form-control" type="text" placeholder="dd-M-Y" name="dateFin" id="dateFin" required>
                             <span class="input-group-append">
@@ -84,8 +84,9 @@ if (isset($_POST['submit'])) {
                             </span>
                         </div>
                     </div>
+                    <!-- <p class="text-danger" id="text2" style="display: none;">La date de fin ne peut pas être antérieure à la date de début.</p> -->
                     <div class="m-2">
-                        <label class="form-label">Motif:</label><br>
+                        <label class="form-label"><b>Motif:</b></label><br>
                         <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
                     </div>
                     <input class="btn btn-primary m-2" type="button" name="submit" value="Soumettre" id="soumission">
@@ -126,10 +127,10 @@ if (isset($_POST['submit'])) {
         var duree = ((dateFin - dateDebut) / (1000 * 60 * 60 * 24)) - compteurWeekend(dateDebut, dateFin) + 1;
 
         if (dateDebut < dateActuelle) {
-            alert("La date de début ne peut pas être antérieure à la date actuelle.");
+            alert('La date de début ne peut pas être antérieure à la date actuelle.');
             event.preventDefault(); // Empêche la soumission du formulaire
         } else if (dateFin < dateDebut) {
-            alert("La date de fin ne peut pas être antérieure à la date de début.");
+            alert('La date de fin ne peut pas être antérieure à la date de début.');
             event.preventDefault(); // Empêche la soumission du formulaire
         } else if (duree > solde) {
             alert("La durée de la demande dépasse votre solde d'absence.");
