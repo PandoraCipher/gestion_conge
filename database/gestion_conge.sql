@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 02 oct. 2023 à 10:12
+-- Généré le : mer. 04 oct. 2023 à 11:01
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -41,14 +41,7 @@ CREATE TABLE `agent` (
 --
 
 INSERT INTO `agent` (`id_agent`, `nom`, `mdp`, `statut`, `acquis`, `solde`) VALUES
-(1, 'Antsonantenaina', '$2y$10$0x9i4EBCr7OaG7VjS67JKeqANV06jl./fH.FZbvkuLNkrjvaJCkF2', 1, 90, 73),
-(2, 'Anarana', '$2y$10$Mz1TcaMKFXTLlsVIqFtBaeo0LcYHZjIeoPRzQFPd5VS3hCZph1bVO', 0, 5, 3),
-(3, 'Anarana2', '$2y$10$3QcMojBlWPvxN152R43.Xe7jxVICrQWbK/NFmQczugjX90dThaLQ.', 0, 0, 0),
-(4, 'Madara', '$2y$10$ssrgB3URLE3Y8MhFDcfKI.Aa6MmNEtuFo140j2tHlmUjotgqya26.', 0, 0, 0),
-(5, 'Zatovo', '$2y$10$pRqvY5EohGQiD6pQgN20ROk/Bv9Qb9Hu.EPQ7JcR4m0osUsVslfw6', 0, 0, 0),
-(6, 'Grimmjow', '$2y$10$8qgSdhPeh/lAblyFInxSHOHcubyj.tdZklAmGHbaXE9k1UxuT6.82', 0, 0, 0),
-(7, 'Yahiko', '$2y$10$.lYNAZr0EeViqpl/mRIdvepnz8msnaJDrconf4BkmMmpiQXySKB9u', 0, 0, 0),
-(8, 'Hallibel', '$2y$10$UDX71dE3K/rZlEZZx3fF8.JNxxfoL2P9FImqtji5i0yF/Yfv243ca', 0, 0, 0);
+(1, 'Antsonantenaina', '$2y$10$0x9i4EBCr7OaG7VjS67JKeqANV06jl./fH.FZbvkuLNkrjvaJCkF2', 1, 90, 64);
 
 -- --------------------------------------------------------
 
@@ -61,21 +54,6 @@ CREATE TABLE `appartenance` (
   `id_groupe` int(11) NOT NULL,
   `id_agent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `appartenance`
---
-
-INSERT INTO `appartenance` (`id_appartenance`, `id_groupe`, `id_agent`) VALUES
-(1, 1, 4),
-(2, 2, 6),
-(3, 1, 7),
-(4, 2, 8),
-(6, 2, 1),
-(7, 1, 5),
-(18, 1, 2),
-(23, 2, 3),
-(25, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -97,15 +75,6 @@ CREATE TABLE `demande` (
   `id_agent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `demande`
---
-
-INSERT INTO `demande` (`id_demande`, `date_demande`, `date_debut`, `date_fin`, `duree`, `etat`, `type_absence`, `motif`, `chevauchement`, `motif_rejet`, `id_agent`) VALUES
-(1, '2023-10-02 10:32:57', '2023-10-09', '2023-10-13', 5, 'acceptée', 'permission', 'Demande principale ', 0, NULL, 1),
-(2, '2023-10-02 10:33:43', '2023-10-10', '2023-10-10', 1, 'en attente', 'permission', 'test', 1, NULL, 2),
-(3, '2023-10-02 10:35:05', '2023-10-03', '2023-10-03', 1, 'en attente', 'permission', 'test 2', 0, NULL, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -122,8 +91,8 @@ CREATE TABLE `groupe` (
 --
 
 INSERT INTO `groupe` (`id_groupe`, `nom_groupe`) VALUES
-(1, 'Akatsuki'),
-(2, 'Espadas');
+(1, 'groupe travail 1'),
+(2, 'groupe travail 2');
 
 --
 -- Index pour les tables déchargées
@@ -164,13 +133,13 @@ ALTER TABLE `groupe`
 -- AUTO_INCREMENT pour la table `appartenance`
 --
 ALTER TABLE `appartenance`
-  MODIFY `id_appartenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_appartenance` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `id_demande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_demande` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées

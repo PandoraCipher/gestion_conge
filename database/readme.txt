@@ -1,0 +1,5 @@
+-Créez une nouvelle base de données avec le nom "gestion_conge"
+-Ouvrez la base de données
+-Importez le fichier "gestion_conge.sql"
+-Remplacez le nom dans la table agent par le nom de l'administrateur
+-Remplacez les noms des groupes de travails dans la table groupe
