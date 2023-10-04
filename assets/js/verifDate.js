@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#dateDeb, #dateFin').on('change', function() {
         // Lorsque l'utilisateur modifie les champs de date
         $('#Rem').hide();
-        $('#soumission').val('Soumettre');
+        $('#soumission').val('Vérifier');
         $('#soumission').prop('type', 'button');
     });
     // Fonction déclenchée lorsque l'utilisateur clique sur le bouton avec l'ID "soumission"
@@ -29,6 +29,7 @@ $(document).ready(function () {
                     } else {
                         // Masquez le div sinon
                         $('#Rem').hide();
+                        $('#soumission').val('Soumettre');
                         $('#soumission').prop('type', 'submit');
                     }
                 }

@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
                         <label class="form-label"><b>Motif:</b></label><br>
                         <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
                     </div>
-                    <input class="btn btn-primary m-2" type="button" name="submit" value="Soumettre" id="soumission">
+                    <input class="btn btn-primary m-2" type="button" name="submit" value="Vérifier" id="soumission">
                 </form>
                 <div id="Rem" style="display: none;">
                     <p style="color: red;">Cette demande chevauche 1 personne de votre groupe de travail</p>
@@ -123,13 +123,19 @@ if (isset($_POST['submit'])) {
         var dateDebut = new Date(document.getElementById('dateDeb').value);
         var dateFin = new Date(document.getElementById('dateFin').value);
         var dateActuelle = new Date();
-        var solde = <?= $_SESSION['solde'] ?>;
-        var duree = ((dateFin - dateDebut) / (1000 * 60 * 60 * 24)) - compteurWeekend(dateDebut, dateFin) + 1;
 
-        if (dateDebut < dateActuelle) {
+        var dateDebutSansHeure = new Date(dateDebut.getFullYear(), dateDebut.getMonth(), dateDebut.getDate());
+        var dateFinSansHeure = new Date(dateFin.getFullYear(), dateFin.getMonth(), dateFin.getDate());
+        var dateActuelleSansHeure = new Date(dateActuelle.getFullYear(), dateActuelle.getMonth(), dateActuelle.getDate());
+
+        var solde = <?= $_SESSION['solde'] ?>;
+        var duree = ((dateFinSansHeure - dateDebutSansHeure) / (1000 * 60 * 60 * 24)) - compteurWeekend(dateDebut, dateFin) + 1;
+
+        if (dateDebutSansHeure < dateActuelleSansHeure) {
             alert('La date de début ne peut pas être antérieure à la date actuelle.');
+            console.log('dateDebut: ' + dateDebut + ' et dateActuelle: ' + dateActuelle);
             event.preventDefault(); // Empêche la soumission du formulaire
-        } else if (dateFin < dateDebut) {
+        } else if (dateFinSansHeure < dateDebutSansHeure) {
             alert('La date de fin ne peut pas être antérieure à la date de début.');
             event.preventDefault(); // Empêche la soumission du formulaire
         } else if (duree > solde) {

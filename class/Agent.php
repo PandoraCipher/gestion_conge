@@ -21,6 +21,12 @@ class Agent{
     public $id_agent;
 
     /**
+     * adresse mail
+     * @var string
+     */
+    public $mail;
+
+    /**
      * @var string
      */
     public $nom;
@@ -52,7 +58,7 @@ class Agent{
      */
     public function seConnecter($nom, $mdp){
         try{
-            $sql = "SELECT * FROM agent WHERE nom = :nom";
+            $sql = "SELECT * FROM agent WHERE nom = :nom OR mail = :nom";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":nom", $nom, PDO::PARAM_STR);
             $stmt->execute();
@@ -61,6 +67,7 @@ class Agent{
                 if((password_verify($mdp, $user['mdp']))){
                 $this->id_agent = $user['id_agent'];
                 $this->nom = $user['nom'];
+                $this->mail = $user['mail'];
                 $this->statut = $user['statut'];
                 return true;
                 }else{
@@ -158,11 +165,12 @@ class Agent{
      * @param  float $solde: 0 par défaut
      * @return void
      */
-    public function ajoutAgent($id_agent, $nom_agent, $mdp, $statut = 0, $acquis = 0, $solde = 0){
-        $sql = "INSERT INTO agent(id_agent, nom, mdp, statut, acquis, solde) VALUES (:id_agent, :nom, :mdp, :statut, :acquis, :solde)";
+    public function ajoutAgent($id_agent, $mail, $nom_agent, $mdp, $statut = 0, $acquis = 300, $solde = 300){
+        $sql = "INSERT INTO agent(id_agent,mail, nom, mdp, statut, acquis, solde) VALUES (:id_agent, :mail, :nom, :mdp, :statut, :acquis, :solde)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":id_agent", $id_agent, PDO::PARAM_INT);
         $stmt->bindParam(":nom", $nom_agent, PDO::PARAM_STR);
+        $stmt->bindParam(":mail", $mail, PDO::PARAM_STR);
         $stmt->bindParam(":mdp", $mdp, PDO::PARAM_STR);
         $stmt->bindParam(":statut", $statut, PDO::PARAM_BOOL);
         $stmt->bindParam(":acquis", $acquis);

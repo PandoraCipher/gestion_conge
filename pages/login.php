@@ -15,6 +15,7 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
         if ($agent->seConnecter($_POST['nom'], $_POST['mdp'])) {
             $_SESSION['id_agent'] = $agent->id_agent;
             $_SESSION['nom'] = $agent->nom;
+            $_SESSION['mail'] = $agent->mail;
             $_SESSION['statut'] = $agent->statut ? "Admin" : "User";
             header('location:Accueil.php');
         } else {
@@ -46,7 +47,7 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
             <p class="text-danger"><?= $message; ?></p>
             <div class="Name input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" name="nom" placeholder="nom" class="form-control" id="nom" required>
+                <input type="text" name="nom" placeholder="Username ou adresse e-mail" class="form-control" id="nom" required>
             </div>
             <div class="pass input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>

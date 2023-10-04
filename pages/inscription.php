@@ -1,16 +1,17 @@
 <?php
 
 require '../vendor/autoload.php';
+
 use App\Agent;
 
 require_once('connexiondb.php');
 
 $message = ' ';
 
-if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])){
+if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])) {
     $mdphache = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
     $agent = new Agent($conn);
-    $agent->ajoutAgent($_POST['id_agent'], $_POST['username'], $mdphache);
+    $agent->ajoutAgent($_POST['id_agent'], $_POST['mail'], $_POST['username'], $mdphache);
 
     header('location:login.php');
 }
@@ -38,7 +39,11 @@ if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])){
             </div>
             <div class="Name input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
-                <input type="text" placeholder="Id" name="id_agent" class="form-control" id="id_agent" required>
+                <input type="text" placeholder="Matricule" name="id_agent" class="form-control" id="id_agent" required>
+            </div>
+            <div class="Name input-group mb-3 was-validated">
+                <span class="input-group-text"><i class="fas">&#64;</i></span>
+                <input type="text" placeholder="Adresse e-mail" name="mail" class="form-control" id="mail" required>
             </div>
             <div class="Name input-group mb-3 was-validated">
                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
@@ -64,6 +69,7 @@ if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])){
 <script>
     // Sélectionnez l'élément d'entrée du mot de passe
     var motdepasse = document.getElementById('mdp');
+    var mail = document.getElementById('mail');
 
     // Écoutez l'événement de changement dans l'entrée du mot de passe
     motdepasse.addEventListener('input', function() {
@@ -82,22 +88,31 @@ if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])){
             motdepasse.setCustomValidity('Le mot de passe doit contenir au moins un chiffre, une majuscule et une minuscule.');
         }
     });
+    mail.addEventListener('input', function() {
+        var email = mail.value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailRegex.test(email)) {
+            mail.setCustomValidity('');
+        } else {
+            mail.setCustomValidity('Veuillez entrer une adresse e-mail valide.');
+        }
+    });
 
     var password2Input = document.getElementById('conf_mdp');
-    password2Input.addEventListener('input', function(){
-      var password2 = password2Input.value;
-      var password = motdepasse.value;
- 
-      if (password === password2){
-        password2Input.setCustomValidity('');
-      }
-      else{
-        password2Input.setCustomValidity('Le mot de passe doit être identique au precédent');
-      }
-    } );
+    password2Input.addEventListener('input', function() {
+        var password2 = password2Input.value;
+        var password = motdepasse.value;
 
-        //Vision
-        const motDePasse = document.getElementById('mdp');
+        if (password === password2) {
+            password2Input.setCustomValidity('');
+        } else {
+            password2Input.setCustomValidity('Le mot de passe doit être identique au precédent');
+        }
+    });
+
+    //Vision
+    const motDePasse = document.getElementById('mdp');
     const togglePassword = document.getElementById('vision');
 
     togglePassword.addEventListener('click', function() {

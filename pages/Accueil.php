@@ -53,15 +53,15 @@ $_SESSION['acquis'] = $enreg['acquis'];
                 </div>
                 <div id="conge" style="background-color:#53f3e6;">
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $enreg['acquis']; ?></p>
+                        <p style="font-size: 30px; margin: 0; padding: 0;"><?= $enreg['acquis']; ?></p>
                         <p style="margin: 0; padding: 0;">acquis</p>
                     </div>
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= $enreg['solde']; ?></p>
+                        <p style="font-size: 30px; margin: 0; padding: 0;"><?= $enreg['solde']; ?></p>
                         <p style="margin: 0; padding: 0;">solde</p>
                     </div>
                     <div class="val">
-                        <p style="font-size: 50px; margin: 0; padding: 0;"><?= ($enreg['acquis'] - $enreg['solde']); ?></p>
+                        <p style="font-size: 30px; margin: 0; padding: 0;"><?= ($enreg['acquis'] - $enreg['solde']); ?></p>
                         <p style="margin: 0; padding: 0;">pris</p>
                     </div>
                 </div>

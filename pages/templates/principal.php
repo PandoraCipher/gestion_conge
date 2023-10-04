@@ -3,6 +3,7 @@ require_once('connexiondb.php');
 if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
     $username = $_SESSION['nom'];
     $statut = $_SESSION['statut'];
+    $mail = $_SESSION['mail'];
 } else {
     echo "non trouvé!!!";
 }
@@ -27,7 +28,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                 <div class="mt-4">
                     <a class="text-white text-decoration-none d-flex ms-3" role="button">
                         <div class="circle"><span id="A">A</span></div>
-                        <span class="fs-5 ms-2 d-none d-sm-inline"><?= $statut ?></span>
+                        <span class=" ms-2 d-none d-sm-inline" style="font-size: small;"><?= $mail ?></span>
                     </a>
                     <hr class="text-white d-none d-sm-block">
                     <ul class="nav nav-pills flex-column mt-2 mt-sm-0" id="menu">
