@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 04 oct. 2023 à 11:01
+-- Généré le : jeu. 05 oct. 2023 à 09:22
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `agent` (
   `id_agent` int(50) NOT NULL,
+  `mail` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `statut` tinyint(1) NOT NULL,
@@ -40,8 +41,8 @@ CREATE TABLE `agent` (
 -- Déchargement des données de la table `agent`
 --
 
-INSERT INTO `agent` (`id_agent`, `nom`, `mdp`, `statut`, `acquis`, `solde`) VALUES
-(1, 'Antsonantenaina', '$2y$10$0x9i4EBCr7OaG7VjS67JKeqANV06jl./fH.FZbvkuLNkrjvaJCkF2', 1, 90, 64);
+INSERT INTO `agent` (`id_agent`, `mail`, `nom`, `mdp`, `statut`, `acquis`, `solde`) VALUES
+(1, 'antson@gmail.com', 'Antsonantenaina', '$2y$10$5DnT1aZ9aOT1xs36r7v5zecRjvRLHKRr22wrE9L5katbU0zZRZ.rC', 1, 300, 300);
 
 -- --------------------------------------------------------
 
