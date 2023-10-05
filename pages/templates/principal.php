@@ -76,7 +76,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
     </div>
     <div id="contenu">
         <header>
-            Hello world
+           <!-- à personnaliser -->
         </header>
 
         <main class="custom-container">

@@ -204,6 +204,25 @@ class Demande
         }
     }
 
+    /**
+     * supprime une demande de la base de donnée
+     * @param int $id_demande
+     * 
+     * @return boolean
+     */
+    public function suprDemande(int $id_demande){
+        try{
+            $sql = "DELETE FROM demande WHERE id_demande = :id_demande";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam('id_demande', $id_demande, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+
+        }catch (PDOException $e){
+            return false;
+        }
+    }
+
     public function recupDateConge($start, $end)
     {
     }

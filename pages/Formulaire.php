@@ -150,6 +150,9 @@ if (isset($_POST['submit'])) {
         }
 
     });
+    document.getElementById('form-dem').addEventListener('submit', function(e){
+        alert('demande envoyée');
+    });
 </script>
 <?php $content = ob_get_clean();
 require_once('templates/principal.php')
