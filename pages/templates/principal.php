@@ -67,7 +67,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
                         </a>
                         <div class="dropdown-menu" aria-labelledby="triggerId">
                             <a class="dropdown-item" href="logout.php">Se déconnecter</a>
-                            <a class="dropdown-item" href="#">Paramètre</a>
+                            <a class="dropdown-item" href="parametre.php">Paramètre</a>
                         </div>
                     </div>
                 </div>

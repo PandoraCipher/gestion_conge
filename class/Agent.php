@@ -177,6 +177,14 @@ class Agent{
         $stmt->bindParam(":solde", $solde, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    public function permission(int $statut, int $id_Agent){
+        $sql = "UPDATE agent SET statut = :statut WHERE id_agent = :id_Agent ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':statut', $statut, PDO::PARAM_INT);
+        $stmt->bindParam(':id_Agent', $id_Agent, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
     
     /**
      * supprimerAgent
