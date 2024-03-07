@@ -39,24 +39,24 @@ if (isset($_SESSION['nom']) || isset($_SESSION['statut'])) {
 </head>
 
 <body>
-    <div class="form mt-5 ">
-        <form method="post" class="needValidation p-2 bg-white rounded-1" style="max-width: 400px; margin: auto;">
-            <div class="text-center label">
+    <div class="form">
+        <form method="post" class="needValidation p-2 rounded-1" style="max-width: 400px; margin: auto;">
+            <div class="title">
                 <h1>Connexion</h1>
             </div>
             <p class="text-danger"><?= $message; ?></p>
             <div class="Name input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" name="nom" placeholder="Username ou adresse e-mail" class="form-control" id="nom" required>
+                <span class="icon"><i class="fa-solid fa-user"></i></span>
+                <input type="text" class="input form-control" name="nom" placeholder="Username ou adresse e-mail" id="nom" required>
             </div>
             <div class="pass input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" name="mdp" placeholder="mot de passe" class="form-control" id="mdp" required>
-                <button type="button" class="btn bg-white border" id="vision"><i class="fa-solid fa-eye"></i></button>
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" class="input form-control" name="mdp" placeholder="mot de passe" id="mdp" required>
+                <button type="button" class="button-log" id="vision"><i class="fa-solid fa-eye"></i></button>
             </div>
             <p><a href="inscription.php" class="">inscription</a></p>
             <div class="fin">
-                <input type="submit" class="btn btn-primary w-100 my-2" name="login" value="Connexion">
+                <input type="submit" class="button-confirm w-100 my-2" name="login" value="Connexion">
             </div>
         </form>
     </div>

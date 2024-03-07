@@ -1,7 +1,6 @@
-body::before{
+/*body::before{
   content: "";
-    background: linear-gradient(135deg,#ec9797, #322fe6, #f76aeb);
-    /*background-image: url(../img/bg1.jpg);*/
+    background-color: #287094;
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
@@ -13,3 +12,168 @@ body::before{
     
     filter: blur(5px)
   }
+
+  .needValidation{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #D4D4CE;
+    color: #121212;
+    box-shadow: 2px 2px 5px #121212;
+  }
+
+  .btn{
+    background-color: #023246;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .form-control{
+    color: #ffffff;
+    background-color: #D4D4CE;
+  }
+
+  .input-group-text{
+    background-color: #D4D4CE;
+    border-color: #121212;
+  }
+
+  .border{
+    background-color: #D4D4CE;
+    color: #ffffff;
+    border-color: #121212;
+  }
+
+  a{
+    color: #121212;
+  }*/
+
+
+  /*code nangalarina*/
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% de la hauteur de la fenêtre */
+    margin: 0;
+}
+  
+  body::before{
+    content: "";
+      background-color: #287094;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: fixed;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      
+      filter: blur(5px)
+    }
+
+  .form {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: beige;
+    --main-color: black;
+    padding: 20px;
+    background: #D4D4CE;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .title {
+    color: var(--font-color);
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .title span {
+    color: var(--font-color-sub);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  
+  .input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+  }
+  
+  .input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .input:focus {
+    border: 2px solid var(--input-focus);
+  }
+  
+  .login-with {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .button-log {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    color: var(--font-color);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--main-color);
+  }
+  
+  .button-log:active, .button-confirm:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
+  
+  .button-confirm {
+    margin: 50px auto 0 auto;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+  }
+  

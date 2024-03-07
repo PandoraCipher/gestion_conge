@@ -24,7 +24,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
 <body class="container-fluid ">
     <div class="container-fluid custom-container" id="sidebar">
         <div class="">
-            <div class="d-flex flex-column justify-content-between col-auto bg-dark min-vh-100">
+            <div class="d-flex flex-column justify-content-between col-auto min-vh-100">
                 <div class="mt-4">
                     <a class="text-white text-decoration-none d-flex ms-3" role="button">
                         <div class="circle"><span id="A">A</span></div>
@@ -75,7 +75,7 @@ if (isset($_SESSION['nom']) && isset($_SESSION['statut'])) {
         </div>
     </div>
     <div id="contenu">
-        <header>
+        <header class="header">
            <!-- à personnaliser -->
         </header>
 

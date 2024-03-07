@@ -1,6 +1,10 @@
 
+.nav-item{
+  color: #C1E8FF;
+}
+
 .nav-pills li a:hover {
-  background-color: rgb(67, 67, 243);
+  background-color: rgb(49, 116, 19);
 }
 .dropdown-item a:hover {
   background-color: rgb(67, 67, 243);
@@ -19,6 +23,7 @@
 }
 #sidebar {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: #2d3250;
 }
 #content {
   display: flex;
@@ -153,11 +158,22 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.form-control{
+  background-color: #676f9d;
+}
+.form-select{
+  background-color: #676f9d;
+}
 #form-dem{
-    background-color: #fff;
+    background-color: #424769;
+    color: #ffffff;
     border-radius: 4px;
     margin-top: 0;
 }
+#contenu{
+  background-color: #979cbd;
+}
+
 .date{
   display: flex;
   flex-direction: row;
@@ -182,8 +198,14 @@
 header{
   text-align: center;
   height: 5%;
-  background-color: #f8f8f8;
+  background-color: #676f9d;
   border-bottom: #0a0a0a;
+}
+.button-submit{
+  background-color: #f9b17a;
+}
+.retour{
+  background-color: #f9b17a;
 }
 .circle {
   width: 30px;
