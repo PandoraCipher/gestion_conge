@@ -45,8 +45,8 @@ if (isset($_POST['submit'])) {
 <body style="background-color: rgb(218, 215, 215);">
     <div class="container-fluid">
         <!--Formulaire de demande -->
-        <div class="container-fluid" style="justify-content: flex-start;" id="formulaire">
-            <a href="Accueil.php" class="btn retour rounded-circle position-fixed retour" style="bottom: 20px; right: 20px;">
+        <div class="container-fluid form" style="justify-content: flex-start;" id="formulaire">
+            <a href="Accueil.php" class="btn btn-primary rounded-circle position-fixed retour" style="bottom: 20px; right: 20px;">
                 <i class="fa fa-arrow-left"></i>
             </a>
             <h2 style="padding: 10px;">Faire une nouvelle demande</h2>
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
                     <div class="m-1">
                         <label class="form-label"><b>Type de demande:</b></label><br>
                         <div class="input-group">
-                            <select class="form-select" id="type" name="type">
+                            <select class=" input form-select" id="type" name="type">
                                 <option value="permission">Permission</option>
                                 <option value="conge">Congé</option>
                             </select>
@@ -64,9 +64,9 @@ if (isset($_POST['submit'])) {
                     <div class="m-2 input-group-date column">
                         <label class="form-label"><b>Date de début:</b></label>
                         <div class=" imput-group-date date">
-                            <input class="form-control" type="text" placeholder="dd-M-Y" name="dateDeb" id="dateDeb" required>
+                            <input class="input" type="text" placeholder="dd-M-Y" name="dateDeb" id="dateDeb" required>
                             <span class="input-group-append">
-                                <span class="input-group-text bg-white">
+                                <span class="button-log">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
@@ -76,9 +76,9 @@ if (isset($_POST['submit'])) {
                     <div class="m-2">
                         <label class="form-label"><b>Date de fin:</b></label>
                         <div class=" imput-group-date date">
-                            <input class="form-control" type="text" placeholder="dd-M-Y" name="dateFin" id="dateFin" required>
+                            <input class="input" type="text" placeholder="dd-M-Y" name="dateFin" id="dateFin" required>
                             <span class="input-group-append">
-                                <span class="input-group-text bg-white">
+                                <span class="button-log">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
@@ -87,9 +87,9 @@ if (isset($_POST['submit'])) {
                     <!-- <p class="text-danger" id="text2" style="display: none;">La date de fin ne peut pas être antérieure à la date de début.</p> -->
                     <div class="m-2">
                         <label class="form-label"><b>Motif:</b></label><br>
-                        <textarea name="motif" class="form-control" id="motif" cols="30" rows="5" required></textarea>
+                        <textarea name="motif" class="input" id="motif" cols="30" rows="5" required></textarea>
                     </div>
-                    <input class="btn button-submit m-2" type="submit" name="submit" value="Vérifier" id="soumission">
+                    <input class="button-confirm m-2" type="submit" name="submit" value="Vérifier" id="soumission">
                 </form>
                 <div id="Rem" style="display: none;">
                     <p style="color: red;">Cette demande chevauche 1 personne de votre groupe de travail</p>

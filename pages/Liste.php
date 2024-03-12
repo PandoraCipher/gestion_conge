@@ -132,7 +132,7 @@ if (($_SESSION['id_agent'] != "0") && ($_SESSION['statut'] == "User")) {
                                             <input type="hidden" name="id_demande" value="<?= $demande['id_demande']; ?>">
                                             <input type="hidden" name="id_agent<?= $demande['id_demande']; ?>" value="<?= $demande['id_agent']; ?>">
                                             <input type="hidden" name="duree<?= $demande['id_demande']; ?>" value="<?= $demande['duree']; ?>">
-                                            <input class="form-control" type="text" placeholder="motif de rejet" name="motif_rejet" id="motif_rejet<?= $demande['id_demande']; ?>">
+                                            <input class="input form-control" type="text" placeholder="motif de rejet" name="motif_rejet" id="motif_rejet<?= $demande['id_demande']; ?>">
                                             <input class="btn btn-success m-1" type="submit" name="accept<?= $demande['id_demande']; ?>" id="accept" value="Accepter" onclick="alert('demande acceptée.')">
                                             <input class="btn btn-danger m-1" type="submit" name="refus" id="refus<?= $demande['id_demande']; ?>" value="Refuser">
 

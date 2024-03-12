@@ -32,34 +32,34 @@ if ((isset($_POST['signin'])) && ($_POST['mdp'] == $_POST['conf_mdp'])) {
 </head>
 
 <body class="log">
-    <div class="form mt-5">
-        <form method="post" class="needValidation container-fluid bg-white rounded-1" style="max-width: 400px; margin: auto;">
-            <div class="text-center label">
-                <h1>Connexion</h1>
+    <div class="form">
+        <form method="post" class="needValidation container-fluid" style="max-width: 400px; margin: auto;">
+            <div class="title">
+                <h1>Inscription</h1>
             </div>
             <div class="Name input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
-                <input type="text" placeholder="Matricule" name="id_agent" class="form-control" id="id_agent" required>
+                <span class="icon"><i class="fa-solid fa-hashtag"></i></span>
+                <input type="text" placeholder="Matricule" name="id_agent" class="input form-control" id="id_agent" required>
             </div>
             <div class="Name input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fas">&#64;</i></span>
-                <input type="text" placeholder="Adresse e-mail" name="mail" class="form-control" id="mail" required>
+                <span class="icon"><i class="fas">&#64;</i></span>
+                <input type="text" placeholder="Adresse e-mail" name="mail" class="input form-control" id="mail" required>
             </div>
             <div class="Name input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" placeholder="Username" name="username" class="form-control" id="username" required>
+                <span class="icon"><i class="fa-solid fa-user"></i></span>
+                <input type="text" placeholder="Username" name="username" class="input form-control" id="username" required>
             </div>
             <div class="pass input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" placeholder="Mot de passe" name="mdp" class="form-control" id="mdp" required>
-                <button type="button" class="btn bg-white border" id="vision"><i class="fa-solid fa-eye"></i></button>
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" placeholder="Mot de passe" name="mdp" class="input form-control" id="mdp" required>
+                <button type="button" class="button-log" id="vision"><i class="fa-solid fa-eye"></i></button>
             </div>
             <div class="pass input-group mb-3 was-validated">
-                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" placeholder="Confirmer" name="conf_mdp" class="form-control" id="conf_mdp" required>
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" placeholder="Confirmer le mot de passe" name="conf_mdp" class="input form-control" id="conf_mdp" required>
             </div>
             <div class="fin">
-                <input type="submit" class="btn btn-success w-100 my-2" name="signin" value="inscription">
+                <input type="submit" class="button-confirm w-100 my-2" name="signin" value="inscription">
             </div>
         </form>
     </div>
